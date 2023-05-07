@@ -1,20 +1,7 @@
 # %%
 
-# !pip install transformer_lens
-# !pip install einops
-# !pip install jaxtyping
-# !pip install git+https://github.com/callummcdougall/CircuitsVis.git#subdirectory=python
-# !pip install protobuf==3.20.*
-# !pip install transformers
-
-# %%
-
-import os; os.environ['CUDA_LAUNCH_BLOCKING'] = "1"; os.environ["ACCELERATE_DISABLE_RICH"] = "1"
+import os
 import sys
-CHAPTER = r"chapter1_transformers"
-chapter_dir = r"./" if CHAPTER in os.listdir() else os.getcwd().split(CHAPTER)[0]
-sys.path.append(chapter_dir + f"{CHAPTER}/exercises/serimats_app")
-
 import einops
 from dataclasses import dataclass
 from transformer_lens import HookedTransformer, HookedTransformerConfig
@@ -499,52 +486,6 @@ def test_caching_vs_hooks(bert: BERT):
 
 if MAIN:
     test_caching_vs_hooks(bert)
-
-
-# %%
-
-# HookedTransformerConfig:
-# {'act_fn': 'gelu_new',
-#  'attention_dir': 'causal',
-#  'attn_only': False,
-#  'attn_types': None,
-#  'checkpoint_index': None,
-#  'checkpoint_label_type': None,
-#  'checkpoint_value': None,
-#  'd_head': 64,
-#  'd_mlp': 3072,
-#  'd_model': 768,
-#  'd_vocab': 50257,
-#  'd_vocab_out': 50257,
-#  'device': 'cuda',
-#  'eps': 1e-05,
-#  'final_rms': False,
-#  'from_checkpoint': False,
-#  'init_mode': 'gpt2',
-#  'init_weights': False,
-#  'initializer_range': 0.02886751345948129,
-#  'model_name': 'gpt2',
-#  'n_ctx': 1024,
-#  'n_heads': 12,
-#  'n_layers': 12,
-#  'n_params': 84934656,
-#  'normalization_type': 'LNPre',
-#  'original_architecture': 'GPT2LMHeadModel',
-#  'parallel_attn_mlp': False,
-#  'positional_embedding_type': 'standard',
-#  'rotary_dim': None,
-#  'scale_attn_by_inverse_layer_idx': False,
-#  'seed': None,
-#  'tokenizer_name': 'gpt2',
-#  'use_attn_result': False,
-#  'use_attn_scale': True,
-#  'use_hook_tokens': False,
-#  'use_local_attn': False,
-#  'use_split_qkv_input': False,
-#  'window_size': None}
-
-# %%
-
 
 
 # %%
